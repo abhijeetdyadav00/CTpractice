@@ -19,7 +19,7 @@ import TaskMainPackage.Page6;
 import Utils.Base;
 import Utils.Utility;
 
-//new stash new branch
+//new stash
 
 public class SingleBrowser extends Utility{
 
