@@ -15,6 +15,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import TaskMainPackage.Page1;
@@ -23,7 +24,9 @@ import TaskMainPackage.Page3;
 import TaskMainPackage.Page4;
 import TaskMainPackage.Page5;
 import TaskMainPackage.Page6;
+import Utils.Base;
 import Utils.Utility;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TaskTestClass extends Utility{
 	
@@ -34,34 +37,57 @@ public class TaskTestClass extends Utility{
 	Page4 fourth;
 	Page5 fifth;
 	Page6 sixth;
+
+	
+	@Parameters ("Browser")
 	
 	
+//	@BeforeSuite
+//	public void beforesuit() {
+//	
+//	WebDriverManager.chromedriver().setup();
+//	driver=new ChromeDriver();
+//	driver.get("https://onlinect.sharepoint.com/sites/interct/");
+//	}
 	
-	@BeforeSuite
-	public void beforesuit() {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\AbhijeetY\\Downloads\\chromedriver_win32\\chromedriver.exe");
-    	driver=new ChromeDriver();
-		driver.get("https://onlinect.sharepoint.com/sites/interct/");
-		driver.manage().timeouts().implicitlyWait(120,TimeUnit.SECONDS);
-		driver.manage().window().maximize();
-	}
+	
+		
+	
 	
 	@BeforeTest
-	public void beforetest() {
+	public void beforetest(String Browser) {
+
+	System.out.println("start");
+		
+		if(Browser.equals("Chrome")) {
+			driver=Base.chrometest();
+		}
+		
+		if(Browser.equals("Edge")) {
+			driver=Base.edgetest();
+		}
+		
+		System.out.println("Continue");
+		
 		first=new Page1(driver);
 		second=new Page2(driver);
 		third=new Page3(driver);
 		fourth=new Page4(driver);
 		fifth=new Page5(driver);
 		sixth=new Page6(driver);
+		
+		driver.manage().timeouts().implicitlyWait(120,TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get("https://onlinect.sharepoint.com/sites/interct/");
+		
 	}
 	
 	@BeforeClass
 	public void beforemethod(){
 	
-		first.firstpage();
-		second.secondpage();
-		third.thirdpage();
+//		first.firstpage();
+//		second.secondpage();
+//		third.thirdpage();
 		
 		try {
 			Thread.sleep(3000);
@@ -113,6 +139,7 @@ public class TaskTestClass extends Utility{
 			e.printStackTrace();
 		}
 	}
+	
 	
 	
 	@Test (priority=3, dependsOnMethods="test2")

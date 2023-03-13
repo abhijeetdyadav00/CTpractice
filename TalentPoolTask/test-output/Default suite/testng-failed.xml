@@ -9,7 +9,6 @@
           <include name="beforemethod"/>
           <include name="beforetest"/>
           <include name="test2"/>
-          <include name="beforesuit"/>
           <include name="test3"/>
         </methods>
       </class> <!-- TaskPackage.TaskTestClass -->
