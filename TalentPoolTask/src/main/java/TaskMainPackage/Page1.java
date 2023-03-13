@@ -24,7 +24,7 @@ public class Page1 {
 	
 	
 	public void firstpage() {
-		username.sendKeys("abhijeet.yadav@citiustech.com");
+		username.sendKeys("");
 		next.click();
 	}
 	

@@ -19,7 +19,7 @@ public class Page2 {
 	}
 	
 	public void secondpage(){
-		pass.sendKeys("Mh12mt7521");
+		pass.sendKeys("");
 		
 		submit.click();
 		
